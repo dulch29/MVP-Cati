@@ -1,0 +1,456 @@
+.cati {
+  position: relative;
+  flex: none;
+}
+
+.cati__svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  /* Squish on tap pivots at her feet, so she compresses downward. */
+  transform-origin: 100px 190px;
+}
+
+/* ---- Base look ---- */
+
+.cati__fur {
+  fill: #f7c99b;
+  stroke: #dc9f68;
+  stroke-width: 3;
+}
+
+.cati__ear-inner {
+  fill: var(--blush);
+}
+
+.cati__eye-open {
+  fill: #4a3128;
+}
+
+.cati__eye-shine {
+  fill: #fff;
+}
+
+.cati__lid {
+  stroke: #4a3128;
+  opacity: 0; /* only shown for sleepy / happy squint */
+}
+
+.cati__blush {
+  fill: #ffb3ba;
+  opacity: 0.6;
+}
+
+.cati__nose {
+  fill: #e78a94;
+}
+
+.cati__mouth,
+.cati__whiskers path {
+  stroke: #b9814f;
+  fill: none;
+}
+
+.cati__tail {
+  stroke: #f7c99b;
+  filter: drop-shadow(0 0 0 transparent);
+}
+
+.cati__paw {
+  fill: #ffe0bd;
+  stroke: #dc9f68;
+  stroke-width: 2.5;
+}
+
+.cati__shadow {
+  fill: rgba(154, 106, 74, 0.16);
+}
+
+.cati__zzz {
+  opacity: 0;
+}
+
+.cati__z {
+  fill: var(--cocoa-soft);
+  font-size: 22px;
+  font-weight: 800;
+}
+
+/* ---- Ambient life: always breathing, always swishing ---- */
+
+.cati__body-group {
+  transform-origin: 100px 176px;
+  animation: cati-breathe 3.4s ease-in-out infinite;
+}
+
+@keyframes cati-breathe {
+  50% {
+    transform: scaleY(1.035) scaleX(0.988);
+  }
+}
+
+.cati__tail-group {
+  transform-origin: 143px 150px;
+  animation: cati-swish 2.6s ease-in-out infinite;
+}
+
+@keyframes cati-swish {
+  0%,
+  100% {
+    transform: rotate(-7deg);
+  }
+  50% {
+    transform: rotate(9deg);
+  }
+}
+
+.cati__eyes {
+  animation: cati-blink 5.4s ease-in-out infinite;
+  transform-origin: 100px 103px;
+}
+
+@keyframes cati-blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.1);
+  }
+}
+
+/* ---- Moods ---- */
+
+/* happy: bounce, squint, wide smile */
+.cati--happy .cati__body-group {
+  animation: cati-hop 0.66s var(--ease-bounce) infinite;
+}
+
+@keyframes cati-hop {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-13px);
+  }
+}
+
+.cati--happy .cati__eye-open,
+.cati--happy .cati__eye-shine {
+  opacity: 0;
+}
+
+.cati--happy .cati__lid {
+  opacity: 1;
+  transform: translateY(-2px) scaleY(-1);
+  transform-origin: 100px 104px;
+}
+
+.cati--happy .cati__mouth {
+  d: path('M89 122 q11 10 22 0');
+}
+
+.cati--happy .cati__blush {
+  opacity: 0.95;
+}
+
+.cati--happy .cati__tail-group {
+  animation-duration: 0.7s;
+}
+
+/* focused: still, narrowed eyes, calm tail */
+.cati--focused .cati__eyes {
+  transform: scaleY(0.62);
+  transform-origin: 100px 105px;
+  animation-duration: 7s;
+}
+
+.cati--focused .cati__tail-group {
+  animation-duration: 5s;
+}
+
+.cati--focused .cati__mouth {
+  d: path('M93 124 h14');
+}
+
+/* hungry: eager wobble, big pleading eyes */
+.cati--hungry .cati__head-group {
+  animation: cati-beg 0.9s ease-in-out infinite;
+  transform-origin: 100px 140px;
+}
+
+@keyframes cati-beg {
+  0%,
+  100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+.cati--hungry .cati__eye-open {
+  ry: 11;
+  rx: 9;
+}
+
+.cati--hungry .cati__mouth {
+  d: path('M92 123 q8 9 16 1');
+}
+
+.cati--hungry .cati__tail-group {
+  animation-duration: 0.9s;
+}
+
+/* sleepy: closed lids, slow breath, floating Zs */
+.cati--sleepy .cati__eye-open,
+.cati--sleepy .cati__eye-shine {
+  opacity: 0;
+}
+
+.cati--sleepy .cati__lid {
+  opacity: 1;
+}
+
+.cati--sleepy .cati__eyes {
+  animation: none;
+}
+
+.cati--sleepy .cati__body-group {
+  animation-duration: 5.4s;
+}
+
+.cati--sleepy .cati__tail-group {
+  animation-duration: 6s;
+}
+
+.cati--sleepy .cati__zzz {
+  opacity: 1;
+}
+
+.cati--sleepy .cati__z--1 {
+  animation: cati-float 2.4s ease-in-out infinite;
+}
+
+.cati--sleepy .cati__z--2 {
+  animation: cati-float 2.4s ease-in-out 0.7s infinite;
+}
+
+@keyframes cati-float {
+  0% {
+    opacity: 0;
+    transform: translate(0, 6px) scale(0.7);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(10px, -18px) scale(1.15);
+  }
+}
+
+/* teasing: cheeky lean, tongue-out smirk */
+.cati--teasing .cati__head-group {
+  animation: cati-smug 1.5s ease-in-out infinite;
+  transform-origin: 100px 145px;
+}
+
+@keyframes cati-smug {
+  0%,
+  100% {
+    transform: rotate(-9deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-9deg) translateY(-5px);
+  }
+}
+
+.cati--teasing .cati__eye--r .cati__eye-open,
+.cati--teasing .cati__eye--r .cati__eye-shine {
+  opacity: 0;
+}
+
+.cati--teasing .cati__mouth {
+  d: path('M92 123 q10 8 17 -2');
+  stroke-width: 3.4;
+}
+
+.cati--teasing .cati__blush {
+  opacity: 0.9;
+}
+
+.cati--teasing .cati__tail-group {
+  animation-duration: 0.85s;
+}
+
+/* surprised: pop, round eyes, small o mouth */
+.cati--surprised .cati__body-group {
+  animation: cati-startle 0.4s var(--ease-bounce);
+}
+
+@keyframes cati-startle {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.1) translateY(-8px);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.cati--surprised .cati__eye-open {
+  rx: 9.5;
+  ry: 11.5;
+}
+
+.cati--surprised .cati__mouth {
+  d: path('M96 124 q4 6 8 0 q-4 3 -8 0');
+  stroke-width: 4;
+}
+
+.cati--surprised .cati__eyes {
+  animation: none;
+}
+
+/* serious: level gaze, flat mouth, no bounce */
+.cati--serious .cati__eyes {
+  transform: scaleY(0.5);
+  transform-origin: 100px 106px;
+  animation: none;
+}
+
+.cati--serious .cati__mouth {
+  d: path('M92 125 h16');
+}
+
+.cati--serious .cati__blush {
+  opacity: 0.25;
+}
+
+.cati--serious .cati__body-group,
+.cati--serious .cati__tail-group {
+  animation-duration: 6s;
+}
+
+/* ---- tapping her ---- */
+
+.cati--pokable {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.cati--pokable:focus-visible {
+  outline: 3px solid var(--cocoa-soft);
+  outline-offset: 6px;
+  border-radius: 24px;
+}
+
+/* Squash-and-stretch on the whole cat, so it reads even at challenge sizes. */
+.cati.is-poked .cati__svg {
+  animation: cati-squish 0.42s var(--ease-bounce);
+}
+
+@keyframes cati-squish {
+  0% {
+    transform: scale(1, 1);
+  }
+  30% {
+    transform: scale(1.07, 0.9);
+  }
+  60% {
+    transform: scale(0.97, 1.05);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+/* ---- holding the clock ---- */
+
+/* Only one body/paw set is ever drawn; the other is the pose we're not in. */
+.cati__body--hold,
+.cati--holding .cati__body--plain,
+.cati--holding .cati__paw--plain {
+  display: none;
+}
+
+.cati--holding .cati__body--hold {
+  display: block;
+}
+
+/* Head lifts and shrinks a touch to make room for what she's carrying. */
+.cati--holding .cati__head-group {
+  transform: translateY(-22px) scale(0.9);
+  transform-origin: 100px 106px;
+}
+
+.cati--holding .cati__shadow {
+  cy: 193px;
+  rx: 54px;
+}
+
+.cati--holding .cati__tail-shift {
+  transform: translate(4px, 26px);
+}
+
+.cati__clock-rim {
+  fill: #fffaf2;
+  stroke: #4a3128;
+  stroke-width: 3;
+}
+
+.cati__clock-face {
+  fill: #f4f1ee;
+  stroke: #cfc7be;
+  stroke-width: 1.5;
+}
+
+.cati__clock-track {
+  stroke: #e2dbd3;
+  stroke-width: 3;
+}
+
+.cati__clock-fill {
+  stroke: var(--carrot, #f08a3c);
+  stroke-width: 3;
+  stroke-linecap: round;
+  /* Dash offsets start at three o'clock; rotate so time runs from the top. */
+  transform: rotate(-90deg);
+  transform-origin: 100px 148px;
+  transition: stroke-dashoffset 0.6s linear;
+}
+
+.cati__clock-nub {
+  fill: var(--carrot, #f08a3c);
+}
+
+.cati__clock-text {
+  fill: #4a3128;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.cati__toes {
+  stroke: #dc9f68;
+  fill: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cati.is-poked .cati__svg {
+    animation: none;
+  }
+
+  .cati__clock-fill {
+    transition: none;
+  }
+}

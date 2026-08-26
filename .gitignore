@@ -1,0 +1,10 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.vite
+
+# Capacitor (added if/when we wrap for mobile)
+android
+ios

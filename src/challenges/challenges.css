@@ -1,0 +1,30 @@
+.challenge {
+  text-align: center;
+}
+
+.bites {
+  display: flex;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.bite {
+  font-size: 1.7rem;
+  opacity: 0.22;
+  filter: grayscale(1);
+  transition:
+    opacity 0.3s ease,
+    filter 0.3s ease,
+    transform 0.35s var(--ease-bounce);
+}
+
+.bite--done {
+  opacity: 1;
+  filter: none;
+  transform: scale(1.18) rotate(-8deg);
+}
+
+.feed-btn:disabled {
+  background: var(--mint-deep);
+  cursor: default;
+}

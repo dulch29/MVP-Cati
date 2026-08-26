@@ -1,0 +1,168 @@
+/* ---- Home ---- */
+
+.home__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home__wordmark {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--peach-deep);
+}
+
+.pouch {
+  display: flex;
+  gap: 6px;
+}
+
+.pouch__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  background: var(--cloud);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ---- Timer ---- */
+
+.clock {
+  margin: 16px 0 14px;
+  font-size: 2.6rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.clock--small {
+  font-size: 1.9rem;
+  margin: 12px 0 10px;
+}
+
+/* ---- Cati's pick (one card, drawn for you) ---- */
+
+.pick {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.pick__label {
+  margin: 0 0 10px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cocoa-soft);
+  text-align: center;
+}
+
+.pick__card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: var(--cloud);
+  box-shadow: var(--shadow-soft);
+  text-align: left;
+  animation: pick-in 0.36s var(--ease-bounce) both;
+  transition:
+    transform 0.16s var(--ease-bounce),
+    box-shadow 0.16s ease;
+}
+
+.pick__card:active {
+  transform: scale(0.97);
+}
+
+.pick__card:hover {
+  box-shadow: var(--shadow-lift);
+}
+
+.pick__icon {
+  font-size: 1.9rem;
+  line-height: 1;
+}
+
+.pick__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.pick__name {
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.pick__tagline {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cocoa-soft);
+}
+
+.pick__go {
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--peach);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--cocoa);
+}
+
+@keyframes pick-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pick__card {
+    animation: none;
+  }
+}
+
+/* ---- Reward ---- */
+
+.prize {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  background: var(--cloud);
+  box-shadow: var(--shadow-lift);
+  animation: prize-pop 0.5s var(--ease-bounce) both;
+}
+
+@keyframes prize-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+}
+
+.prize__icon {
+  font-size: 1.7rem;
+}
+
+.prize__text {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
