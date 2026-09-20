@@ -39,6 +39,7 @@ export default function HomeScreen({
       <Cati
         mood={line.mood}
         size={230}
+        walking
         onPoke={() => setLine(lineFor('poke'))}
       />
       <SpeechBubble text={line.text} />

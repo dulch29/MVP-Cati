@@ -39,20 +39,20 @@ const SCRIPT: Record<CatiEvent, Line[]> = {
   ],
   startWork: [
     { text: "Alright, 25 minutes. I'm watching you.", mood: 'serious' },
-    { text: "No scrolling. I'll know. Cats always know.", mood: 'serious' },
-    { text: "Let's go. I'll sit right here the whole time.", mood: 'focused' },
+    { text: "No scrolling. I'll know... Cats always know.", mood: 'serious' },
+    { text: "Let's go! I'll sit right here the whole time!", mood: 'focused' },
   ],
   midWork: [
-    { text: 'Still going. Nice.', mood: 'focused' },
+    { text: 'Still going? Nice.', mood: 'focused' },
     { text: "Halfway. Don't look at me, look at your work.", mood: 'focused' },
   ],
   finishWork: [
     { text: 'MEOW! Time! You actually did it!', mood: 'happy' },
-    { text: "That's 25 minutes. I'm a little impressed.", mood: 'happy' },
+    { text: "That's 25 minutes. I'm a little impressed. MEOW!", mood: 'happy' },
     { text: "Done! Okay, my turn now. Break time.", mood: 'happy' },
   ],
   startBreak: [
-    { text: 'Five minutes. Stretch, then come play.', mood: 'idle' },
+    { text: 'Five minutes. Stretchhhh, then come play.', mood: 'idle' },
     { text: 'Break! Pick something fun for us.', mood: 'happy' },
   ],
   pickChallenge: [

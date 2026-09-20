@@ -22,6 +22,8 @@ interface CatiProps {
   clock?: string
   /** 0–1 elapsed fraction, swept around the clock's bezel. */
   progress?: number
+  /** Add a light in-place walk cycle with alternating paws and an occasional glance. */
+  walking?: boolean
 }
 
 /**
@@ -36,6 +38,7 @@ export default function Cati({
   onPoke,
   clock,
   progress,
+  walking = false,
 }: CatiProps) {
   // Alternating chirp/purr so repeated taps don't sound like a stuck button.
   const pokes = useRef(0)
@@ -66,6 +69,7 @@ export default function Cati({
     'cati',
     `cati--${mood}`,
     holding && 'cati--holding',
+    walking && 'cati--walking',
     squish && 'is-poked',
     onPoke && 'cati--pokable',
     className,
@@ -90,7 +94,7 @@ export default function Cati({
       }
       role={onPoke ? 'button' : 'img'}
       tabIndex={onPoke ? 0 : undefined}
-      aria-label={onPoke ? 'Pet Cati' : `Cati looking ${mood}`}
+      aria-label={onPoke ? 'Pet Cati' : walking ? 'Cati walking' : `Cati looking ${mood}`}
     >
       <svg viewBox="0 0 200 200" className="cati__svg">
         <ellipse className="cati__shadow" cx="100" cy="181" rx="52" ry="8" />

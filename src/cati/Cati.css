@@ -104,6 +104,90 @@
   }
 }
 
+/* ---- Walking: an in-place stroll built from the existing SVG parts ---- */
+
+.cati--walking .cati__body-group {
+  animation: cati-walk-bob 0.72s ease-in-out infinite;
+}
+
+.cati--walking .cati__head-group {
+  animation: cati-walk-glance 3.6s ease-in-out infinite;
+  transform-origin: 100px 140px;
+}
+
+.cati--walking .cati__tail-group {
+  animation: cati-walk-tail 0.72s ease-in-out infinite;
+}
+
+.cati--walking .cati__paw--plain {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.cati--walking .cati__paw--plain:first-of-type {
+  animation: cati-walk-paw-a 0.72s ease-in-out infinite;
+}
+
+.cati--walking .cati__paw--plain:last-of-type {
+  animation: cati-walk-paw-b 0.72s ease-in-out 0.18s infinite;
+}
+
+@keyframes cati-walk-bob {
+  0%,
+  100% {
+    transform: translateY(1px) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(1deg);
+  }
+}
+
+@keyframes cati-walk-glance {
+  0%,
+  28%,
+  100% {
+    transform: rotate(0deg) translateX(0);
+  }
+  38%,
+  58% {
+    transform: rotate(-4deg) translateX(-2px);
+  }
+  68%,
+  82% {
+    transform: rotate(3deg) translateX(2px);
+  }
+}
+
+@keyframes cati-walk-tail {
+  0%,
+  100% {
+    transform: rotate(-9deg);
+  }
+  50% {
+    transform: rotate(12deg);
+  }
+}
+
+@keyframes cati-walk-paw-a {
+  0%,
+  100% {
+    transform: translate(-3px, 1px) rotate(-8deg);
+  }
+  50% {
+    transform: translate(3px, -2px) rotate(8deg);
+  }
+}
+
+@keyframes cati-walk-paw-b {
+  0%,
+  100% {
+    transform: translate(3px, -2px) rotate(8deg);
+  }
+  50% {
+    transform: translate(-3px, 1px) rotate(-8deg);
+  }
+}
+
 .cati__eyes {
   animation: cati-blink 5.4s ease-in-out infinite;
   transform-origin: 100px 103px;
